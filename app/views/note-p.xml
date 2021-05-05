@@ -1,0 +1,23 @@
+<Page loaded="onLoaded">
+  <Page.actionBar> <!-- Defining an ActionBar element -->
+    <ActionBar title="Notes"> <!-- Setting the title of the ActionBar element -->
+      <!-- Adding a control to the ActionBar element -->
+      <!-- Setting the position and text of the ActionBar element on iOS and Android -->
+      <ActionItem tap="onAddTap" text="Add" ios.position="right" android.position="actionBar" />
+    </ActionBar>
+  </Page.actionBar>
+
+  <StackLayout>
+    <!-- pages is an observable array of scrapbook pages-->
+    <ListView items="{{ pages}} " itemTap="onItemTap" >
+      <!--All content defined inside of an item template will be rendered once for 
+          each item in pages observable array-->
+      <ListView.itemTemplate> 
+        <StackLayout>
+          <!--title binds to a property on each array item-->
+          <Label text="{{title, title + ' Notes' }}" />             
+        </StackLayout>
+      </ListView.itemTemplate>
+    </ListView>
+  </StackLayout>
+</Page>

@@ -1,0 +1,10 @@
+<!--Move the page model definition to its own xml view-->
+<Page loaded="onLoaded"> 
+<ScrollView>
+    <StackLayout>
+    <Label text="{{ title, title + ' Notes' }}" />
+        <TextField class="header" text="{{ text }}" hint="Anything"/>
+        <Button tap="onDoneTap" text="Done"/>
+    </StackLayout>
+</ScrollView>
+</Page>
