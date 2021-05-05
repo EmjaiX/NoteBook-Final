@@ -10,5 +10,5 @@ exports.onLoaded = function(args) {
 
 exports.onTap = function(args){
     var frame = require("tns-core-modules/ui/frame").Frame;
-    frame.topmost().navigate("views/notes");
+    frame.topmost().navigate("views/note-p");
 }
