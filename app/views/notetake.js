@@ -1,20 +1,20 @@
 var observable = require("tns-core-modules/data/observable");
 var frame = require("tns-core-modules/ui/frame").Frame;
-var fileSystemService = require("~/data/fileSystemService");
+var fileSystemService = require("../files/fileSystemService");
 var camera = require("nativescript-camera");
-var imageSource = require("~/data/fileSystemService")
+var imageSource = require("../files/fileSystemService")
 var geolocation = require("nativescript-geolocation")
 
-exports.onLoaded = function(args){
+exports.onLoaded = function(args) {
     var page = args.object;
-    
+
     var notep = page.navigationContext.model;
 
     // Set the binding context of the page to the page that was selected from the list view
     page.bindingContext = notep;
 };
 
-exports.onDoneTap = function(args){
+exports.onDoneTap = function(args) {
     var page = args.object;
     var notep = page.bindingContext;
     fileSystemService.fileSystemService.savePage(notep);
@@ -23,12 +23,12 @@ exports.onDoneTap = function(args){
     });
 };
 
-exports.onTakePicTap = function (args){
+exports.onTakePicTap = function(args) {
     var page = args.object;
     var notep = page.bindingContext;
 
-    geolocation.isEnabled().then(function (enabled){
-        if(!enabled){
+    geolocation.isEnabled().then(function(enabled) {
+        if (!enabled) {
             geolocation.enableLocationRequest();
         }
     });
@@ -41,12 +41,12 @@ exports.onTakePicTap = function (args){
         height: 100,
         keepAspectRatio: true,
         saveToGallery: true
-    }).then(function (picture){
-        imageSource.fromAsset(picture).then(function (imageSource){
-            notep.set("image",imageSource);
+    }).then(function(picture) {
+        imageSource.fromAsset(picture).then(function(imageSource) {
+            notep.set("image", imageSource);
         });
 
-        gelolocation.getCurrentLocation().then(function (location){
+        gelolocation.getCurrentLocation().then(function(location) {
             notep.set("lat", location.latitude);
             notep.set("lon", location.longitude);
         });
