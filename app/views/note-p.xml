@@ -14,7 +14,8 @@
           each item in pages observable array-->
       <ListView.itemTemplate> 
         <StackLayout>
-          <SearchBar id="bar" hint="click here to search ..."></SearchBar> 
+          <SearchBar id="bar" hint="click here to search ..."></SearchBar>
+          <Switch checked="false" loaded="onSwitchLoaded"></Switch> 
           <!--title binds to a property on each array item-->
           <Label text="{{title, title + ' Notes' }}" />             
         </StackLayout>
