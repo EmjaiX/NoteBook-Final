@@ -53,12 +53,14 @@ fileSystemService.prototype.savePage = function(notes){
     });
     if(index !== -1) {  // when page is found
         pages[index] = { // update the entry within the array
-            text: notes.text
+            text: notes.text,
+            imageBase64: notes.image == null? null: notes.image.toBase64String("png")
         };
     }
     else { // otherwise, add an entry for the page into the array.
         pages.push({
-            text: notes.text
+            text: notes.text,
+            imageBase64: notes.image == null? null: notes.image.toBase64String("png")
         });
     }
     // Convert objects to JSON and save to the file system

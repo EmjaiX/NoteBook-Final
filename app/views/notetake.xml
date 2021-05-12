@@ -2,8 +2,11 @@
 <Page loaded="onLoaded"> 
 <ScrollView>
     <StackLayout>
-    <Label text="{{ title, title + ' Notes' }}" />
+        <Label text="{{ title, title + ' Notes' }}" />
         <TextField class="header" text="{{ text }}" hint="Anything"/>
+        <Image src ="{{image}}" stretch="none"/>
+        <Button text="Take Picture" tap = "onTakePicTap"/>
+        <Label text="{{ (lat, lon), 'Picture taken at ' + lat + ', ' + lon }}" />
         <Button tap="onDoneTap" text="Done"/>
     </StackLayout>
 </ScrollView>

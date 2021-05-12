@@ -8,7 +8,7 @@ exports.onLoaded = function(args) {
     page.bindingContext = home;
 }
 
-exports.onTap = function(args) {
+exports.onTap = function(args){
     var frame = require("tns-core-modules/ui/frame").Frame;
-    frame.topmost().navigate("note-p");
+    frame.topmost().navigate("views/note-p");
 }

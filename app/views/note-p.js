@@ -8,6 +8,7 @@ function pageModel(id) { // require an id to create a page
     var model = new observable.Observable();
 
     model.id = id;
+    model.image = item.image;
     return model;
 }
 
