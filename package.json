@@ -17,6 +17,7 @@
     "dependencies": {
         "@nativescript/theme": "~2.3.0",
         "nativescript-camera": "^4.5.0",
+        "nativescript-geolocation": "^5.1.0",
         "tns-core-modules": "~6.5.0"
     },
     "devDependencies": {
