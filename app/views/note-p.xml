@@ -14,8 +14,8 @@
           each item in pages observable array-->
       <ListView.itemTemplate> 
         <StackLayout>
-          <SearchBar id="bar" hint="click here to search ..."></SearchBar>
-          <Switch checked="false" loaded="onSwitchLoaded"></Switch> 
+          <SearchBar id="bar" hint="click here to search ..."></SearchBar><!--search bar not linked up-->
+          <Switch checked="false" loaded="onSwitchLoaded"></Switch> <!--switch bar but havent determined the use of it-->
           <!--title binds to a property on each array item-->
           <Label text="{{title, title + ' Notes' }}" />             
         </StackLayout>
@@ -23,3 +23,12 @@
     </ListView>
   </StackLayout>
 </Page>
+<!--
+  Add a new note to the gallery :::: almost completed
+  Remove a note from the gallery, :::: not completed
+  Edit the content of a note, which may include text, images, and other content of your choice :::: almost completed
+  Email/share a note :::: not completed
+  Search a note :::: only implemented but not functional
+  2 additional features: geolocation and a switch but i think we should add more to be safe
+  The continue button is messed up
+-->
