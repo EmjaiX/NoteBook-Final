@@ -1,0 +1,19 @@
+<Page navigatingTo="onLoaded">
+  <Page.actionBar> <!-- Defining an ActionBar element -->
+    <ActionBar title="Notes"> <!-- Setting the title of the ActionBar element -->
+    </ActionBar>
+  </Page.actionBar>
+
+  <StackLayout>
+    <!-- pages is an observable array of scrapbook pages-->
+    <ListView >
+      <!--All content defined inside of an item template will be rendered once for 
+          each item in pages observable array-->
+      <ListView.itemTemplate> 
+        <StackLayout>
+          <Label text="Project Done by Lexan and Hai Liang" />             
+        </StackLayout>
+      </ListView.itemTemplate>
+    </ListView>
+  </StackLayout>
+</Page>
