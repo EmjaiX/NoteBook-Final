@@ -4,13 +4,13 @@ var fileSystemService = require("../files/fileSystemService");
 var camera = require("nativescript-camera");
 var imageSource = require("../files/fileSystemService");
 var geolocation = require("nativescript-geolocation");
-var SocialShare = require("@nativescript/social-share");
+var SocialShare = require("nativescript-social-share");
+/// alote ot stufs
+//way more stffs
 
 exports.onLoaded = function(args) {
     var page = args.object;
-    console.log(page.navigationContext);
     var notep = page.navigationContext.model.note;
-    console.log(notep.text);
 
     notep.text = notep.text;
     notep.title = notep.title;
@@ -30,6 +30,14 @@ exports.onLoaded = function(args) {
         });
         // }
     };
+    notep.del = () => {
+
+        //something to refer to the function in FilesystemService
+        fileSystemService.fileSystemService.delNote(notep);
+        frame.topmost().navigate({
+            moduleName: "views/note-p",
+        });
+    }
 
     notep.onTakePicTap = () => {
 

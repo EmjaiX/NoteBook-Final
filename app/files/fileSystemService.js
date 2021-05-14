@@ -90,5 +90,17 @@ fileSystemService.prototype.nameTaken = function(title) {
     })
     return false;
 };
+fileSystemService.prototype.delNote = function(title) {
+    var pages = this.getPages();
+    var index = pages.findIndex(function(element) {
+        return element.id === title.id;
+    });
+    if (index !== -1) { // when page is found
+        pages.splice(index, 1);
+    };
+    var json = JSON.stringify(pages);
+    // console.log(json);
+    this.file.writeTextSync(json);
+};
 
 exports.fileSystemService = new fileSystemService();
