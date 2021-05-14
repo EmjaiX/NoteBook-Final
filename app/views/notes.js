@@ -1,16 +1,36 @@
-var observableModule = require("tns-core-modules/data/observable"); // load observable module
-exports.onLoaded = function(args) {
-    var page = args.object;
-    var home = new observableModule.fromObject({
-        header: "Note Book",
-        footer: "CIS 288 2021"
-    });
-    page.bindingContext = home;
-}
+var Observable = require("tns-core-modules/data/observable"); // load observable module 123
+var frame = require("tns-core-modules/ui/frame").Frame;
 
-exports.onTap = function(args){
-    var frame = require("tns-core-modules/ui/frame").Frame;
-    frame.topmost().navigate("views/note-p");
+exports.onNavigatingTo = function(args) {
+    var page = args.object;
+
+    const home = new Observable.Observable();
+    home.header = "Note Book";
+    home.footer = "CIS 288 2021";
+    home.Continue = () => {
+        console.log("helloworld");
+        frame.topmost().navigate({
+            moduleName: "views/note-p",
+            animated: true,
+            transition: {
+                name: "slideright",
+                duration: 500,
+                curve: "easeIn" //transition
+            }
+        });
+    }
+    home.About = () => {
+        frame.topmost().navigate({
+            moduleName: "views/note-p",
+            animated: true,
+            transition: {
+                name: "slideright",
+                duration: 500,
+                curve: "easeIn" //transition
+            }
+        });
+    }
+    page.bindingContext = home;
 }
 
 /*<!--

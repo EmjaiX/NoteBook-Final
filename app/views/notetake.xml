@@ -1,5 +1,5 @@
 <!--Move the page model definition to its own xml view-->
-<Page loaded="onLoaded"> 
+<Page navigatingTo="onLoaded"> 
 <ScrollView>
     <StackLayout>
         <Label text="{{ title, title + ' Notes' }}" />
