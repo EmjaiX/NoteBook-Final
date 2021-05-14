@@ -15,7 +15,6 @@
       <ListView.itemTemplate> 
         <StackLayout>
           <SearchBar id="bar" hint="click here to search ..."></SearchBar><!--search bar not linked up-->
-          <Switch checked="false" loaded="onSwitchLoaded"></Switch> <!--switch bar but havent determined the use of it-->
           <!--title binds to a property on each array item-->
           <Label text="{{title, title + ' Notes' }}" />             
         </StackLayout>

@@ -6,7 +6,8 @@
         <Label class="footnote" text="{{footer}}" />
         <StackLayout orientation="horizontal" horizontalAlignment="center">
             <Button class="body-primary" text="About" tap="{{ About }}"/>
-            <Button class="body-primary" text="Continue" tap="{{ Continue }}"/>  <!--this button doesnt work-->          
+            <Button class="body-primary" text="Continue" tap="{{ Continue }}"/>  <!--this button doesnt work-->    
+            <Switch checked="false" loaded="onSwitchLoaded"></Switch>      
         </StackLayout>        
     </StackLayout>
 </ScrollView>

@@ -51,6 +51,20 @@ exports.onLoaded = function(args) {
     page.bindingContext = notep;
 };
 
+exports.onShareTap = function(args) 
+{
+    var page=args.object;
+    var scrapbook = page.bindingContext;
+    var image =scrapbook.image;
+
+    var pic = imageSource.fromFile("~/images/animals.png");
+
+    SocialShare.shareImage(image);
+    SocialShare.shareText("Last week of class");
+    SocialShare.shareUrl("http://www.google.com", "Google");
+
+};
+
 /*<!--
   Add a new note to the gallery :::: almost completed
   Remove a note from the gallery, :::: not completed

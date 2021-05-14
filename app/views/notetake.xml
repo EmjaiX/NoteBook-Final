@@ -7,6 +7,8 @@
         <Image src ="{{image}}" stretch="none"/>
         <Button text="Take Picture" tap = "onTakePicTap"/>
         <Label text="{{ (lat, lon), 'Picture taken at ' + lat + ', ' + lon }}" /> 
+        <Button text="Delete" tap="del" />
+        <Button text="Share to Social Media" tap="onShareTap" />
         <Button tap="onDoneTap" text="Done"/>
     </StackLayout>
 </ScrollView>
