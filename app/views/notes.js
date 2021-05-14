@@ -21,7 +21,7 @@ exports.onNavigatingTo = function(args) {
     }
     home.About = () => {
         frame.topmost().navigate({
-            moduleName: "views/note-p",
+            moduleName: "views/about",
             animated: true,
             transition: {
                 name: "slideright",

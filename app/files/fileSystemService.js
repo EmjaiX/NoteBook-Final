@@ -102,5 +102,18 @@ fileSystemService.prototype.delNote = function(title) {
     // console.log(json);
     this.file.writeTextSync(json);
 };
+fileSystemService.prototype.search = function(search) {
+    var temp = this.getPages();
+    search = search.trim();
+    if (search != "") { return temp; } else {
+        temp.forEach(function(element) {
+            if (element.title.contains == search) {
+                pages.push(element);
+            }
+        });
+        var json = JSON.stringify(pages);
+    }
+    return json;
+};
 
 exports.fileSystemService = new fileSystemService();

@@ -12,6 +12,16 @@ function getItem(id) { // require an id to create a page
     return model;
 }
 
+function getBlank() { // require an id to create a page
+    var model = new Observable.Observable();
+
+    let pages = fileSystemService.fileSystemService.getPages();
+    model.note = pages[0];
+    model.note.title = "Title";
+    model.note.text = "Data";
+    model.note.image = "";
+    return model;
+}
 exports.onLoaded = function(args) {
     var page = args.object;
 
@@ -22,11 +32,21 @@ exports.onLoaded = function(args) {
     // load the array of pages from file system
     notes.pages = fileSystemService.fileSystemService.getPages();
     // Implement the event handler for action item on tap
+    notes.value = "";
+    notes.update = () => {
+        console.log(notes.value);
+        notes.pages = fileSystemService.fileSystemService.search(notes.value);
+    }
     notes.onAddTap = () => {
         frame.topmost().navigate({
             moduleName: "views/notetake",
             //Pass data to the update page
-            context: { model: new pageModel(notes.pages.length) }
+            context: { model: getBlank() }
+        });
+    };
+    notes.Back = () => {
+        frame.topmost().navigate({
+            moduleName: "views/notes",
         });
     };
 

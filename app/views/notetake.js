@@ -32,7 +32,7 @@ exports.onLoaded = function(args) {
     };
     notep.del = () => {
 
-        //something to refer to the function in FilesystemService
+
         fileSystemService.fileSystemService.delNote(notep);
         frame.topmost().navigate({
             moduleName: "views/note-p",
