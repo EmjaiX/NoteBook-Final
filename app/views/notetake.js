@@ -2,20 +2,33 @@ var observable = require("tns-core-modules/data/observable");
 var frame = require("tns-core-modules/ui/frame").Frame;
 var fileSystemService = require("../files/fileSystemService");
 var camera = require("nativescript-camera");
-var imageSource = require("../files/fileSystemService")
-var geolocation = require("nativescript-geolocation")
+var imageSource = require("../files/fileSystemService");
+var geolocation = require("nativescript-geolocation");
+var SocialShare = require("@nativescript/social-share");
 
 exports.onLoaded = function(args) {
     var page = args.object;
+    console.log(page.navigationContext);
+    var notep = page.navigationContext.model.note;
+    console.log(notep.text);
 
-    var notep = page.navigationContext.model;
-
+    notep.text = notep.text;
+    notep.title = notep.title;
+    notep.image = notep.imageBase64;
+    notep.onShareTap = () => {
+        SocialShare.shareText(notep.title + " : " + notep.text);
+    };
 
     notep.onDoneTap = () => {
-        fileSystemService.fileSystemService.savePage(notep);
+        // if(fileSystemService.fileSystemService.nameTaken(notep.title)){
+        //     notep.title
+        // }
+        // else{
+        fileSystemService.fileSystemService.addNote(notep);
         frame.topmost().navigate({
             moduleName: "views/note-p",
         });
+        // }
     };
 
     notep.onTakePicTap = () => {
@@ -35,14 +48,16 @@ exports.onLoaded = function(args) {
             keepAspectRatio: true,
             saveToGallery: true
         }).then((picture) => {
-            imageSource.fromAsset(picture).then(function(imageSource) {
-                notep.set("image", imageSource);
+            console.log("here")
+            imageSource.fromAsset(picture).then(function(image) {
+                notep.image = image;
             });
+            console.log("here1211")
 
-            gelolocation.getCurrentLocation().then(function(location) {
-                notep.set("lat", location.latitude);
-                notep.set("lon", location.longitude);
-            });
+            // gelolocation.getCurrentLocation().then(function(location) {
+            //     notep.lat = location.latitude;
+            //     notep.lon = location.longitude;
+            // });
         });
 
     };
@@ -51,19 +66,6 @@ exports.onLoaded = function(args) {
     page.bindingContext = notep;
 };
 
-exports.onShareTap = function(args) 
-{
-    var page=args.object;
-    var scrapbook = page.bindingContext;
-    var image =scrapbook.image;
-
-    var pic = imageSource.fromFile("~/images/animals.png");
-
-    SocialShare.shareImage(image);
-    SocialShare.shareText("Last week of class");
-    SocialShare.shareUrl("http://www.google.com", "Google");
-
-};
 
 /*<!--
   Add a new note to the gallery :::: almost completed

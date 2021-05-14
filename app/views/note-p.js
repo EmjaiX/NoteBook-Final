@@ -4,11 +4,11 @@ var frame = require("tns-core-modules/ui/frame").Frame;
 var fileSystemService = require("../files/fileSystemService");
 
 // create a model for the scrapbook page
-function pageModel(id) { // require an id to create a page
+function getItem(id) { // require an id to create a page
     var model = new Observable.Observable();
 
-    // model.id = id;
-    console.log(id);
+    let pages = fileSystemService.fileSystemService.getPages();
+    model.note = pages[id];
     return model;
 }
 
@@ -38,12 +38,12 @@ exports.onLoaded = function(args) {
     }
 
     // Implementation of the list item tap event handler
-    notes.onItemTap = () => {
+    notes.onItemTap = (data) => {
         frame.topmost().navigate({
             moduleName: "views/notetake",
             // Pass the scrapbook model and index of the page we want 
             // to update to the page we are navigating to
-            context: { model: notes.pages.getItem(args.index) }
+            context: { model: getItem(data.index) }
         });
     };
 

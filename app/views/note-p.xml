@@ -9,12 +9,12 @@
 
   <StackLayout>
     <!-- pages is an observable array of scrapbook pages-->
-    <ListView items="{{ pages }} " itemTap="onItemTap" >
+    <ListView items="{{ pages }} " itemTap="{{ onItemTap }}" >
       <!--All content defined inside of an item template will be rendered once for 
           each item in pages observable array-->
       <ListView.itemTemplate> 
         <StackLayout>
-          <SearchBar id="bar" hint="click here to search ..."></SearchBar><!--search bar not linked up-->
+          <!-- <SearchBar id="bar" hint="click here to search ..."></SearchBar>search bar not linked up -->
           <!--title binds to a property on each array item-->
           <Label text="{{title, title + ' Notes' }}" />             
         </StackLayout>

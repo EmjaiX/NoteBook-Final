@@ -2,14 +2,16 @@
 <Page navigatingTo="onLoaded"> 
 <ScrollView>
     <StackLayout>
-        <Label text="{{ title, title + ' Notes' }}" />
-        <TextField class="header" text="{{ text }}" hint="Anything"/>
+        <TextField class="header" text="{{ title }}" />
+        <TextView text="{{ text }}" hint="Notes ..."/>
         <Image src ="{{image}}" stretch="none"/>
-        <Button text="Take Picture" tap = "onTakePicTap"/>
+        <Button text="Take Picture" tap = "{{onTakePicTap}}"/>
         <Label text="{{ (lat, lon), 'Picture taken at ' + lat + ', ' + lon }}" /> 
-        <Button text="Delete" tap="del" />
-        <Button text="Share to Social Media" tap="onShareTap" />
-        <Button tap="onDoneTap" text="Done"/>
+        <GridLayout columns="*,*,*" rows="*">
+        <Button text="Delete" tap="{{del}}" col="0" row="0"/>
+        <Button text="Share" tap="{{onShareTap}}" col="1" row="0"/>
+        <Button tap="{{onDoneTap}}" text="Done" col="2" row="0"/>
+        </GridLayout>
     </StackLayout>
 </ScrollView>
 </Page>
